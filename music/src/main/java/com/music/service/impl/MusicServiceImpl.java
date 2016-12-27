@@ -41,10 +41,7 @@ public class MusicServiceImpl implements MusicServices {
 			}
 
 		} catch (Exception e) {
-			//"Something went wrong!" + e.getMessage()
 			LOG.error("error not found music", e);
-
-
 		}
 
 		return new ArrayList<>();
