@@ -25,6 +25,10 @@ Is an project built to learn about the Spring Cloud Netflix.
 * URL
   
   http://localhost:8082/v1/movies
+  
+* Using a api client
+
+  https://github.com/thelinmichael/spotify-web-api-java 
 
 #NewsServices
 
