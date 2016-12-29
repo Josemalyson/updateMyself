@@ -11,9 +11,13 @@ Is an project built to learn about the Spring Cloud Netflix.
 
   The music project have a responsibility of find sites and information about a music search by user. Rendered the information to the client via consuming of Rest Server.
 
-* URL
+* Local URL 
 
   http://localhost:8081/v1/musics
+  
+* Using a api client
+
+  https://github.com/thelinmichael/spotify-web-api-java 
 
 #MoviesServices
 
@@ -25,10 +29,6 @@ Is an project built to learn about the Spring Cloud Netflix.
 * URL
   
   http://localhost:8082/v1/movies
-  
-* Using a api client
-
-  https://github.com/thelinmichael/spotify-web-api-java 
 
 #NewsServices
 
