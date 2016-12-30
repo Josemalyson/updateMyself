@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import com.music.exception.MusicExecption;
 import com.music.model.object.Music;
 import com.music.service.MusicServices;
 import com.wrapper.spotify.Api;
@@ -12,18 +14,23 @@ import com.wrapper.spotify.methods.TrackSearchRequest;
 import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.Track;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class MusicServiceImpl implements MusicServices {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1885330290744799796L;
-	
-	private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(MusicServiceImpl.class);
 
 	@Override
 	public List<Music> findByMusicName(String query, String market) {
+
+		if (StringUtils.isEmpty(query) || StringUtils.isEmpty(market)) {
+			throw new MusicExecption("Values QUERY or MARKET can't nulls");
+		}
 
 		Api api = Api.DEFAULT_API;
 
@@ -41,7 +48,7 @@ public class MusicServiceImpl implements MusicServices {
 			}
 
 		} catch (Exception e) {
-			LOG.error("error not found music", e);
+			log.error("error not found music", e);
 		}
 
 		return new ArrayList<>();

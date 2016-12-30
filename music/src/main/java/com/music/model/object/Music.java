@@ -9,8 +9,13 @@ import javax.persistence.Table;
 
 import com.wrapper.spotify.models.Track;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 @Entity
 @Table(name = "TB_MUSIC")
+@EqualsAndHashCode(exclude = { "track" })
+@ToString
 public class Music implements Serializable {
 
 	private static final java.lang.String EMPTY_STRING = "";
@@ -67,47 +72,12 @@ public class Music implements Serializable {
 
 			StringBuilder artistsBuilder = new StringBuilder();
 
-			this.track.getArtists().forEach(artists -> {
-
-				artistsBuilder.append(artists.getName());
-
-			});
+			this.track.getArtists().forEach(artists -> artistsBuilder.append(artists.getName()));
 
 			return artistsBuilder.toString();
 		}
 
 		return EMPTY_STRING;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((track == null) ? 0 : track.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Music other = (Music) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (track == null) {
-			if (other.track != null)
-				return false;
-		} else if (!track.equals(other.track))
-			return false;
-		return true;
 	}
 
 }
